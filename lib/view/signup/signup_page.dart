@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/view/bottom_nav_page.dart';
+import 'package:myapp/view/login/login_page.dart';
 
-import '../signup/signup_page.dart';
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  bool isChecked = false;
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               )),
           Center(
             child: Text(
-              'Login to your account',
+              'Create your account',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16,
@@ -86,44 +78,36 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           SizedBox(
-            height: 4,
+            height: 16,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                      width: 20,
-                      child: Checkbox(
-                          value: isChecked,
-                          onChanged: (value) {
-                            setState(() {
-
-                            isChecked = !isChecked;
-                            print(isChecked);
-                            });
-                          })),
-                  SizedBox(
-                    width: 6,
-                  ),
-                  Text('Remember Me'),
-                ],
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.lock),
+              hintText: 'Confirm Password',
+              border: InputBorder.none,
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  width: 1,
+                  color: Colors.grey,
+                ),
               ),
-              Text('Forget Password?',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Colors.blue,
-                  )),
-            ],
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  width: 1,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
           ),
+
           SizedBox(
-            height: 8,
+            height: 16,
           ),
           MaterialButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, MaterialPageRoute(builder: (context){
                 return BottomNavPage();
               }));
             },
@@ -139,26 +123,21 @@ class _LoginPageState extends State<LoginPage> {
             ),
             color: Colors.blue,
           ),
-          SizedBox(
-            height: 30,
-          ),
+          SizedBox(height: 30,),
           GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return SignUpPage();
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return LoginPage();
               }));
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account?"),
-                SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  "Sign Up",
-                  style: TextStyle(color: Colors.blue),
-                ),
+                Text("Already have an account?"),
+                SizedBox(width: 4,),
+                Text("Sign In", style: TextStyle(
+                  color: Colors.blue
+                ),),
               ],
             ),
           ),

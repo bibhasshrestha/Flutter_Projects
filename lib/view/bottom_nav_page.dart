@@ -28,6 +28,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+
         unselectedFontSize: 14,
         selectedFontSize: 14,
         onTap: onTap,
