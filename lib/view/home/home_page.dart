@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+
+
+  var iconData = [
+    Icons.person,
+    Icons.calendar_month,
+    Icons.calendar_today,
+    Icons.punch_clock,
+    Icons.file_copy,
+    Icons.offline_bolt,
+    Icons.approval,
+    Icons.report,
+  ];
+
+  var homedata = [
+    'Self Service',
+    'Leave Tracker',
+    'Attendance',
+    'Performance',
+    'File',
+    'Organization',
+    'Approvals',
+    'Reports',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -11,46 +33,48 @@ class HomePage extends StatelessWidget {
         title: Text('Home'),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        actions: [Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: Icon(Icons.notifications, color: Colors.white,),
+        )],
       ),
       body: ListView(
         physics: ScrollPhysics(),
-
         padding: EdgeInsets.all(24),
-
         children: [
-          Text('Good Afternoon', style: TextStyle(
-            fontSize: 16
-                ,
-            fontWeight: FontWeight.w700
-          ),),
-          SizedBox(height: 16,),
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-                physics: ScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.all(8),
-                    margin: EdgeInsets.only(bottom: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: ListTile(
-                      leading: AspectRatio(
-                          aspectRatio: 4 / 4,
-                          child: Image.asset('assets/sevalogo.jpg')),
-                      title: Text('Mountain'),
-                      subtitle: Text('hajdhasjd'),
-                      trailing: Icon(
-                        Icons.arrow_circle_right,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  );
-                }),
+          Text(
+            'Good Afternoon, Bibhas Shrestha',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
           ),
+          SizedBox(
+            height: 16,
+          ),
+          ListView.builder(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              itemCount: homedata.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  padding: EdgeInsets.all(16),
+                  margin: EdgeInsets.only(bottom: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: ListTile(
+                    leading: Icon(
+                      iconData[index],
+                      color: Colors.blue,
+                    ),
+                    title: Text(homedata[index]),
+
+                    trailing: Icon(
+                      Icons.arrow_circle_right,
+                      color: Colors.grey,
+                    ),
+                  ),
+                );
+              }),
         ],
       ),
     );

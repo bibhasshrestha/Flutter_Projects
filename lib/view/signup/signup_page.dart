@@ -101,13 +101,12 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
           ),
-
           SizedBox(
             height: 16,
           ),
           MaterialButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context){
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return BottomNavPage();
               }));
             },
@@ -123,10 +122,12 @@ class SignUpPage extends StatelessWidget {
             ),
             color: Colors.blue,
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context){
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return LoginPage();
               }));
             },
@@ -134,10 +135,13 @@ class SignUpPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Already have an account?"),
-                SizedBox(width: 4,),
-                Text("Sign In", style: TextStyle(
-                  color: Colors.blue
-                ),),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  "Sign In",
+                  style: TextStyle(color: Colors.blue),
+                ),
               ],
             ),
           ),
